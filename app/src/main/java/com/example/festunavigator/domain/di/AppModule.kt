@@ -39,8 +39,8 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideGraphRepository(database: Database): GraphRepository {
-        return GraphImpl(database)
+    fun provideGraphRepository(): GraphRepository {
+        return GraphImpl()
     }
 
     @Provides
