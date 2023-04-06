@@ -1,6 +1,7 @@
 package com.example.festunavigator.data.repository
 
 import com.example.festunavigator.data.data_source.Database
+import com.example.festunavigator.data.data_source.FB_Database
 import com.example.festunavigator.data.model.TreeNodeDto
 import com.example.festunavigator.domain.repository.GraphRepository
 import com.example.festunavigator.domain.tree.TreeNode
@@ -14,10 +15,9 @@ import io.github.sceneview.math.toVector3
 import javax.inject.Inject
 
 class GraphImpl @Inject constructor(
-    private val database: Database
 ): GraphRepository {
 
-    private val dao = database.graphDao
+    private val dao = FB_Database()
 
     override suspend fun getNodes(): List<TreeNodeDto> {
         return dao.getNodes() ?: listOf()
