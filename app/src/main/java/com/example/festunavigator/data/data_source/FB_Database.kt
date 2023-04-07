@@ -1,5 +1,6 @@
 package com.example.festunavigator.data.data_source
 
+import android.util.Log
 import com.example.festunavigator.data.model.TreeNodeDto
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -17,17 +18,22 @@ class FB_Database {
         }
     }
     fun getNodes():List<TreeNodeDto>{
+        val database2 = Firebase.database
+        val myRef = database2.getReference("message")
+
+        myRef.setValue("Hello, World!")
         var nodes = listOf<TreeNodeDto>()
         database.addListenerForSingleValueEvent(
             object : ValueEventListener {
                 override fun onDataChange(dataSnapshot: DataSnapshot) {
-                    var foundNodes = dataSnapshot.value as Map<String?, TreeNodeDto?>
-                    nodes = foundNodes.values.toList() as List<TreeNodeDto>
+                    Log.e("TAG","dfsdfdsf");
+                    var foundNodes = dataSnapshot.value
+                    print(foundNodes)
                 }
                 override fun onCancelled(databaseError: DatabaseError) {
                 }
             })
-        while(nodes.isEmpty()) {}
+        //while(nodes.isEmpty()) {}
         return nodes
     }
     fun getNodesAsMap():Map<String?, TreeNodeDto?>{
