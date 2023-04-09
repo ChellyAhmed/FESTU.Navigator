@@ -7,50 +7,38 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
+import kotlinx.coroutines.tasks.await
 
 
 class FB_Database {
-    private val database = Firebase.database.reference.child("nodes")
+    private val database = Firebase.database("https://navigationapp-7ae38-default-rtdb.europe-west1.firebasedatabase.app/").reference.child("nodes")
     fun insertNodes(nodes : List<TreeNodeDto>) {
         for (node in nodes) {
             val newNodeRef = database.push()
             newNodeRef.setValue(node)
         }
     }
-    fun getNodes():List<TreeNodeDto>{
-        val database2 = Firebase.database
-        val myRef = database2.getReference("message")
-
-        myRef.setValue("Hello, World!")
-        var nodes = listOf<TreeNodeDto>()
-        database.addListenerForSingleValueEvent(
-            object : ValueEventListener {
-                override fun onDataChange(dataSnapshot: DataSnapshot) {
-                    Log.e("TAG","dfsdfdsf");
-                    var foundNodes = dataSnapshot.value
-                    print(foundNodes)
-                }
-                override fun onCancelled(databaseError: DatabaseError) {
-                }
-            })
-        //while(nodes.isEmpty()) {}
-        return nodes
+    suspend fun getNodes():List<TreeNodeDto>{
+        val res = database.get().await()
+        try {
+            val foundNodesMap = res.value as Map<String,TreeNodeDto>
+            return ArrayList(foundNodesMap.values)
+        }
+        catch(e : Exception) {
+            return listOf()
+        }
     }
-    fun getNodesAsMap():Map<String?, TreeNodeDto?>{
-        var nodes = mapOf<String?,TreeNodeDto?>()
-        database.addListenerForSingleValueEvent(
-            object : ValueEventListener {
-                override fun onDataChange(dataSnapshot: DataSnapshot) {
-                    var foundNodes = dataSnapshot.value as Map<String?, TreeNodeDto?>
-                    nodes = foundNodes
-                }
-                override fun onCancelled(databaseError: DatabaseError) {
-                }
-            })
-        while(nodes.isEmpty()) {}
-        return nodes
+    suspend fun getNodesAsMap():Map<String, TreeNodeDto>{
+        val res = database.get().await()
+        try {
+            val foundNodesMap = res.value as Map<String,TreeNodeDto>
+            return foundNodesMap
+        }
+        catch(e : Exception) {
+            return mapOf()
+        }
     }
-    fun deleteNodes(nodes : List<TreeNodeDto>){
+    suspend fun deleteNodes(nodes : List<TreeNodeDto>){
         val ids = nodes.map { it.id }
         val refs = mutableListOf<String>()
         val allNodes = getNodesAsMap()
