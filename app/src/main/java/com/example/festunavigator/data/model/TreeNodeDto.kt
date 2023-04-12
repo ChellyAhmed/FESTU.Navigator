@@ -18,6 +18,9 @@ class TreeNodeDto(
     val forwardVector: Quaternion? = null
 ) {
 
+    override fun toString(): String {
+        return "x:$x y:$y z:$z type:$type number:$number neighbours $neighbours forwardVector: $forwardVector"
+    }
 
     companion object {
         val TYPE_PATH = "path"
@@ -39,6 +42,5 @@ class TreeNodeDto(
                 neighbours = node.neighbours
             )
         }
-
     }
 }

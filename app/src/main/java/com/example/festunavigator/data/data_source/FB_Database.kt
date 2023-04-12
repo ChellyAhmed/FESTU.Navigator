@@ -15,19 +15,31 @@ class FB_Database {
     fun insertNodes(nodes : List<TreeNodeDto>) {
         for (node in nodes) {
             val newNodeRef = database.push()
-            newNodeRef.setValue(node)
+            Log.e("TAG Insert",node.toString())
+            newNodeRef.setValue(TreeNodeDto( node.id , node.x, node.y, node.z, node.type, node.number?:null))
         }
     }
-    suspend fun getNodes():List<TreeNodeDto>{
+    suspend fun getNodes(): List<TreeNodeDto> {
         val res = database.get().await()
         try {
-            val foundNodesMap = res.value as Map<String,TreeNodeDto>
-            return ArrayList(foundNodesMap.values)
-        }
-        catch(e : Exception) {
-            return listOf()
+            val foundNodesMap = res.value as Map<String, TreeNodeDto>
+            Log.e("ZZZ", "Found nodes:" + foundNodesMap.toString())
+            var arrList = ArrayList(foundNodesMap.values)
+            arrList.map {
+                x ->
+                (x.neighbours?:null)?.let {
+                    TreeNodeDto(x.id, x.x, x.y, x.z, x.type,
+                        x.number?:null, it, x.forwardVector?:null)
+                }
+            }
+            Log.e("ZZZ", "Exce")
+            return arrList
+        } catch(e: Exception) {
+            Log.e("ZZZ", "Exception caught finding nodes: " + e.toString())
+            return emptyList()
         }
     }
+
     suspend fun getNodesAsMap():Map<String, TreeNodeDto>{
         val res = database.get().await()
         try {
@@ -56,7 +68,8 @@ class FB_Database {
     fun updateNodes(nodes : List<TreeNodeDto>) {
         for (node in nodes) {
             val newNodeRef = database.push()
-            newNodeRef.setValue(node)
+            Log.d("ZZZ", "Update")
+            newNodeRef.setValue(TreeNodeDto( node.id , node.x, node.y, node.z, node.type, node.number?:null, node.neighbours?:mutableListOf() , node.forwardVector?:null))
         }
     }
 

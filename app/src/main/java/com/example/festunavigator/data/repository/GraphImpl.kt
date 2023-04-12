@@ -1,5 +1,6 @@
 package com.example.festunavigator.data.repository
 
+import android.util.Log
 import com.example.festunavigator.data.data_source.Database
 import com.example.festunavigator.data.data_source.FB_Database
 import com.example.festunavigator.data.model.TreeNodeDto
