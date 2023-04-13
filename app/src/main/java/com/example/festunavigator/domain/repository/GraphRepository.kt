@@ -28,4 +28,7 @@ interface GraphRepository {
 
     suspend fun clearNodes()
 
+    suspend fun getNodesFromFirebase()
+
+    fun pushNodesToFirebase()
 }

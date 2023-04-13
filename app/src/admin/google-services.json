@@ -1,33 +1,92 @@
 {
   "project_info": {
-    "project_number": "585021364061",
-    "project_id": "festu-navigator",
-    "storage_bucket": "festu-navigator.appspot.com"
+    "project_number": "224833649690",
+    "firebase_url": "https://navigationapp-7ae38-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "navigationapp-7ae38",
+    "storage_bucket": "navigationapp-7ae38.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:585021364061:android:fe3e2c14e15689df0bfab4",
+        "mobilesdk_app_id": "1:224833649690:android:e4c4493da1e7a63fb1a5a3",
         "android_client_info": {
-          "package_name": "com.example.festunavigator.admin"
+          "package_name": "com.example.festunavigator"
         }
       },
       "oauth_client": [
         {
-          "client_id": "585021364061-4kbu8lj4l6jq21jnh6h50ebopit7eikp.apps.googleusercontent.com",
+          "client_id": "224833649690-hpqfn607ko7f4sofkc2752hgep8caoge.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCWcXWGuBnlcduZj-Y30jfa3e5Sa6QHeKY"
+          "current_key": "AIzaSyCphsvkxEREp1CdDVHvbxsomF1pxCXKBUk"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "585021364061-4kbu8lj4l6jq21jnh6h50ebopit7eikp.apps.googleusercontent.com",
+              "client_id": "224833649690-hpqfn607ko7f4sofkc2752hgep8caoge.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:224833649690:android:e22b275955fefb00b1a5a3",
+        "android_client_info": {
+          "package_name": "com.example.festunavigator.admin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "224833649690-hpqfn607ko7f4sofkc2752hgep8caoge.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCphsvkxEREp1CdDVHvbxsomF1pxCXKBUk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "224833649690-hpqfn607ko7f4sofkc2752hgep8caoge.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:224833649690:android:1a69fd05806d0663b1a5a3",
+        "android_client_info": {
+          "package_name": "com.example.festunavigator.user"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "224833649690-hpqfn607ko7f4sofkc2752hgep8caoge.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCphsvkxEREp1CdDVHvbxsomF1pxCXKBUk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "224833649690-hpqfn607ko7f4sofkc2752hgep8caoge.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

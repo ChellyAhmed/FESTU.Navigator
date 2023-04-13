@@ -83,6 +83,7 @@ class Tree @Inject constructor(
         }
         _allPoints.keys.forEach { id -> setRegion(id) }
         preloaded = true
+        repository.pushNodesToFirebase()
     }
 
     suspend fun initialize(entryNumber: String, position: Float3, newRotation: Quaternion): Result<Unit?> {

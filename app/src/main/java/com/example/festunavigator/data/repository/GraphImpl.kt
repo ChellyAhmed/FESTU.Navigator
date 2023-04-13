@@ -19,6 +19,13 @@ class GraphImpl @Inject constructor(
 
     private val dao = database.graphDao
 
+    override fun pushNodesToFirebase(){
+        return dao.pushNodesToFirebase()
+    }
+    override suspend fun getNodesFromFirebase(){
+        return dao.getNodesFromFirebase()
+    }
+
     override suspend fun getNodes(): List<TreeNodeDto> {
         return dao.getNodes() ?: listOf()
     }

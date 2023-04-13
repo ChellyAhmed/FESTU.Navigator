@@ -76,7 +76,6 @@ class OrientationFragment : Fragment() {
                         println("LL HORIZONTAL PLANE DETECTED LL")
                         println("LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL")
 
-
                     }
 
                 }
