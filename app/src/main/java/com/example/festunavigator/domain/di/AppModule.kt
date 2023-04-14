@@ -30,7 +30,8 @@ object AppModule {
     @Singleton
     fun provideDatabase(app: Application): Database {
         return Room.databaseBuilder(app, Database::class.java, DATABASE_NAME)
-            .createFromAsset(DATABASE_DIR)
+            //@Ahmed: Commented the line below so the database is empty when the app is installed
+            //.createFromAsset(DATABASE_DIR)
             .allowMainThreadQueries()
             .addMigrations()
             .build()

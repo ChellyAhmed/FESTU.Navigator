@@ -141,7 +141,8 @@ class TextAnalyzer: ObjectDetector {
     }
 
     private fun filterFunction(text: Text.TextBlock): Boolean {
-        return text.text[0].isDigit()
+        //@Ahmed: Changed the line below so it accepts letters as first chars of text.
+        return true //text.text[0].isDigit()
     }
 
 }
