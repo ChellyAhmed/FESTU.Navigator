@@ -11,5 +11,5 @@
         android:cropToPadding="false"
         android:scaleType="fitCenter"
         app:srcCompat="@drawable/ic_up_arrow"
-        app:tint="#30811D" />
+        app:tint="@color/smu_blue" />
 </FrameLayout>
